@@ -1,0 +1,43 @@
+# Dependencies
+node_modules/
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+.Python
+
+# Environment
+venv/
+env/
+ENV/
+
+# Large dataset directories
+dataset/
+model/
+*.h5
+*.keras
+*.model
+
+# Cache and temporary files
+.DS_Store
+*.log
+*.pot
+*.mo
+.pytest_cache/
+.coverage
+htmlcov/
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# Build
+build/
+dist/
+*.egg-info/
+
+# OS
+Thumbs.db

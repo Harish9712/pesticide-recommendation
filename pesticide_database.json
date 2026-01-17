@@ -1,0 +1,368 @@
+{
+  "Apple_scab": [
+    {
+      "name": "Copper Fungicide",
+      "active_ingredient": "Copper Hydroxide",
+      "target_diseases": [
+        "Apple_scab",
+        "Black_rot",
+        "Cedar_apple_rust"
+      ],
+      "target_pests": [],
+      "application_method": "Foliar spray",
+      "dosage": "2-4 lbs per 100 gallons",
+      "frequency": "Every 7-14 days during growing season",
+      "safety_level": "Safe",
+      "environmental_impact": "Low",
+      "organic_approved": true,
+      "pre_harvest_interval": "0 days",
+      "reentry_interval": "4 hours",
+      "toxicity_notes": "Low toxicity to humans and beneficial insects",
+      "environmental_notes": "Minimal environmental impact, copper can accumulate in soil",
+      "alternatives": [
+        "Sulfur fungicide",
+        "Bacillus subtilis"
+      ],
+      "cost_level": "Medium",
+      "effectiveness": "High"
+    },
+    {
+      "name": "Sulfur Fungicide",
+      "active_ingredient": "Elemental Sulfur",
+      "target_diseases": [
+        "Apple_scab",
+        "Powdery_mildew"
+      ],
+      "target_pests": [],
+      "application_method": "Foliar spray or dust",
+      "dosage": "3-5 lbs per 100 gallons",
+      "frequency": "Every 7-10 days",
+      "safety_level": "Safe",
+      "environmental_impact": "Low",
+      "organic_approved": true,
+      "pre_harvest_interval": "0 days",
+      "reentry_interval": "24 hours",
+      "toxicity_notes": "Very low toxicity",
+      "environmental_notes": "Minimal environmental impact",
+      "alternatives": [
+        "Copper fungicide",
+        "Baking soda solution"
+      ],
+      "cost_level": "Low",
+      "effectiveness": "Medium"
+    }
+  ],
+  "Black_rot": [
+    {
+      "name": "Copper Fungicide",
+      "active_ingredient": "Copper Hydroxide",
+      "target_diseases": [
+        "Black_rot",
+        "Apple_scab"
+      ],
+      "target_pests": [],
+      "application_method": "Foliar spray",
+      "dosage": "2-4 lbs per 100 gallons",
+      "frequency": "Every 7-14 days",
+      "safety_level": "Safe",
+      "environmental_impact": "Low",
+      "organic_approved": true,
+      "pre_harvest_interval": "0 days",
+      "reentry_interval": "4 hours",
+      "toxicity_notes": "Low toxicity",
+      "environmental_notes": "Minimal environmental impact",
+      "alternatives": [
+        "Sulfur fungicide",
+        "Bacillus subtilis"
+      ],
+      "cost_level": "Medium",
+      "effectiveness": "High"
+    }
+  ],
+  "Powdery_mildew": [
+    {
+      "name": "Sulfur Fungicide",
+      "active_ingredient": "Elemental Sulfur",
+      "target_diseases": [
+        "Powdery_mildew",
+        "Apple_scab"
+      ],
+      "target_pests": [],
+      "application_method": "Foliar spray",
+      "dosage": "3-5 lbs per 100 gallons",
+      "frequency": "Every 7-10 days",
+      "safety_level": "Safe",
+      "environmental_impact": "Low",
+      "organic_approved": true,
+      "pre_harvest_interval": "0 days",
+      "reentry_interval": "24 hours",
+      "toxicity_notes": "Very low toxicity",
+      "environmental_notes": "Minimal environmental impact",
+      "alternatives": [
+        "Baking soda solution",
+        "Milk solution"
+      ],
+      "cost_level": "Low",
+      "effectiveness": "High"
+    },
+    {
+      "name": "Baking Soda Solution",
+      "active_ingredient": "Sodium Bicarbonate",
+      "target_diseases": [
+        "Powdery_mildew"
+      ],
+      "target_pests": [],
+      "application_method": "Foliar spray",
+      "dosage": "1 tablespoon per gallon + 1 drop dish soap",
+      "frequency": "Every 7 days",
+      "safety_level": "Very Safe",
+      "environmental_impact": "Low",
+      "organic_approved": true,
+      "pre_harvest_interval": "0 days",
+      "reentry_interval": "0 hours",
+      "toxicity_notes": "Completely safe for humans and environment",
+      "environmental_notes": "No environmental impact",
+      "alternatives": [
+        "Milk solution",
+        "Sulfur fungicide"
+      ],
+      "cost_level": "Very Low",
+      "effectiveness": "Medium"
+    }
+  ],
+  "Bacterial_spot": [
+    {
+      "name": "Copper Bactericide",
+      "active_ingredient": "Copper Hydroxide",
+      "target_diseases": [
+        "Bacterial_spot"
+      ],
+      "target_pests": [],
+      "application_method": "Foliar spray",
+      "dosage": "1-2 lbs per 100 gallons",
+      "frequency": "Every 7-10 days",
+      "safety_level": "Safe",
+      "environmental_impact": "Low",
+      "organic_approved": true,
+      "pre_harvest_interval": "0 days",
+      "reentry_interval": "4 hours",
+      "toxicity_notes": "Low toxicity",
+      "environmental_notes": "Minimal environmental impact",
+      "alternatives": [
+        "Bacillus subtilis",
+        "Streptomycin"
+      ],
+      "cost_level": "Medium",
+      "effectiveness": "High"
+    },
+    {
+      "name": "Bacillus subtilis",
+      "active_ingredient": "Bacillus subtilis strain QST 713",
+      "target_diseases": [
+        "Bacterial_spot",
+        "Fungal diseases"
+      ],
+      "target_pests": [],
+      "application_method": "Foliar spray",
+      "dosage": "2-4 oz per 100 gallons",
+      "frequency": "Every 7-14 days",
+      "safety_level": "Very Safe",
+      "environmental_impact": "Low",
+      "organic_approved": true,
+      "pre_harvest_interval": "0 days",
+      "reentry_interval": "0 hours",
+      "toxicity_notes": "Completely safe for humans and beneficial insects",
+      "environmental_notes": "Beneficial bacteria, improves soil health",
+      "alternatives": [
+        "Copper bactericide",
+        "Streptomycin"
+      ],
+      "cost_level": "Medium",
+      "effectiveness": "Medium"
+    }
+  ],
+  "Tomato_Yellow_Leaf_Curl_Virus": [
+    {
+      "name": "Insecticide for Whiteflies",
+      "active_ingredient": "Neem Oil",
+      "target_diseases": [],
+      "target_pests": [
+        "Whiteflies",
+        "Aphids"
+      ],
+      "application_method": "Foliar spray",
+      "dosage": "2-4 oz per gallon",
+      "frequency": "Every 7-14 days",
+      "safety_level": "Safe",
+      "environmental_impact": "Low",
+      "organic_approved": true,
+      "pre_harvest_interval": "0 days",
+      "reentry_interval": "4 hours",
+      "toxicity_notes": "Low toxicity, safe for beneficial insects",
+      "environmental_notes": "Biodegradable, minimal environmental impact",
+      "alternatives": [
+        "Pyrethrin",
+        "Insecticidal soap"
+      ],
+      "cost_level": "Low",
+      "effectiveness": "Medium"
+    },
+    {
+      "name": "Insecticidal Soap",
+      "active_ingredient": "Potassium Salts of Fatty Acids",
+      "target_diseases": [],
+      "target_pests": [
+        "Whiteflies",
+        "Aphids",
+        "Spider mites"
+      ],
+      "application_method": "Foliar spray",
+      "dosage": "2.5-5 oz per gallon",
+      "frequency": "Every 7-10 days",
+      "safety_level": "Very Safe",
+      "environmental_impact": "Low",
+      "organic_approved": true,
+      "pre_harvest_interval": "0 days",
+      "reentry_interval": "0 hours",
+      "toxicity_notes": "Very low toxicity",
+      "environmental_notes": "Biodegradable, safe for environment",
+      "alternatives": [
+        "Neem oil",
+        "Pyrethrin"
+      ],
+      "cost_level": "Low",
+      "effectiveness": "Medium"
+    }
+  ],
+  "Banana_Black_Sigatoka_Disease": [
+    {
+      "name": "Copper Fungicide",
+      "active_ingredient": "Copper Hydroxide",
+      "target_diseases": [
+        "Black_Sigatoka",
+        "Yellow_Sigatoka"
+      ],
+      "target_pests": [],
+      "application_method": "Foliar spray",
+      "dosage": "2-4 lbs per 100 gallons",
+      "frequency": "Every 7-14 days",
+      "safety_level": "Safe",
+      "environmental_impact": "Low",
+      "organic_approved": true,
+      "pre_harvest_interval": "0 days",
+      "reentry_interval": "4 hours",
+      "toxicity_notes": "Low toxicity",
+      "environmental_notes": "Minimal environmental impact",
+      "alternatives": [
+        "Sulfur fungicide",
+        "Bacillus subtilis"
+      ],
+      "cost_level": "Medium",
+      "effectiveness": "High"
+    }
+  ],
+  "Banana_Panama_Disease": [
+    {
+      "name": "Soil Treatment",
+      "active_ingredient": "Bacillus subtilis",
+      "target_diseases": [
+        "Panama_Disease"
+      ],
+      "target_pests": [],
+      "application_method": "Soil drench",
+      "dosage": "1-2 oz per gallon, 1 gallon per plant",
+      "frequency": "Every 30 days",
+      "safety_level": "Very Safe",
+      "environmental_impact": "Low",
+      "organic_approved": true,
+      "pre_harvest_interval": "0 days",
+      "reentry_interval": "0 hours",
+      "toxicity_notes": "Completely safe",
+      "environmental_notes": "Improves soil health",
+      "alternatives": [
+        "Crop rotation",
+        "Resistant varieties"
+      ],
+      "cost_level": "Medium",
+      "effectiveness": "Medium"
+    }
+  ],
+  "Spider_mites": [
+    {
+      "name": "Neem Oil",
+      "active_ingredient": "Azadirachtin",
+      "target_diseases": [],
+      "target_pests": [
+        "Spider_mites",
+        "Aphids",
+        "Whiteflies"
+      ],
+      "application_method": "Foliar spray",
+      "dosage": "2-4 oz per gallon",
+      "frequency": "Every 7-14 days",
+      "safety_level": "Safe",
+      "environmental_impact": "Low",
+      "organic_approved": true,
+      "pre_harvest_interval": "0 days",
+      "reentry_interval": "4 hours",
+      "toxicity_notes": "Low toxicity, safe for beneficial insects",
+      "environmental_notes": "Biodegradable",
+      "alternatives": [
+        "Insecticidal soap",
+        "Horticultural oil"
+      ],
+      "cost_level": "Low",
+      "effectiveness": "High"
+    },
+    {
+      "name": "Horticultural Oil",
+      "active_ingredient": "Mineral Oil",
+      "target_diseases": [],
+      "target_pests": [
+        "Spider_mites",
+        "Scale insects",
+        "Aphids"
+      ],
+      "application_method": "Foliar spray",
+      "dosage": "2-4 oz per gallon",
+      "frequency": "Every 7-14 days",
+      "safety_level": "Safe",
+      "environmental_impact": "Low",
+      "organic_approved": true,
+      "pre_harvest_interval": "0 days",
+      "reentry_interval": "4 hours",
+      "toxicity_notes": "Low toxicity",
+      "environmental_notes": "Minimal environmental impact",
+      "alternatives": [
+        "Neem oil",
+        "Insecticidal soap"
+      ],
+      "cost_level": "Low",
+      "effectiveness": "High"
+    }
+  ],
+  "Healthy": [
+    {
+      "name": "Preventive Care",
+      "active_ingredient": "None",
+      "target_diseases": [],
+      "target_pests": [],
+      "application_method": "Cultural practices",
+      "dosage": "N/A",
+      "frequency": "Ongoing",
+      "safety_level": "Very Safe",
+      "environmental_impact": "Low",
+      "organic_approved": true,
+      "pre_harvest_interval": "N/A",
+      "reentry_interval": "N/A",
+      "toxicity_notes": "No toxicity",
+      "environmental_notes": "No environmental impact",
+      "alternatives": [
+        "Continue monitoring",
+        "Maintain plant health"
+      ],
+      "cost_level": "Very Low",
+      "effectiveness": "High"
+    }
+  ]
+}
