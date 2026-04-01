@@ -1,0 +1,11 @@
+# Render Blueprint — Web Service for Flask API
+# Use: New → Blueprint → connect repo. Or create Web Service manually with the same build/start commands.
+# TensorFlow is heavy: pick an instance with enough RAM (Starter+ recommended).
+
+services:
+  - type: web
+    name: plant-disease-api
+    runtime: python
+    buildCommand: pip install --upgrade pip && pip install -r requirements.txt
+    startCommand: gunicorn prediction_api:app --bind 0.0.0.0:$PORT --workers 1 --threads 2 --timeout 120
+    healthCheckPath: /health

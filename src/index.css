@@ -24,36 +24,335 @@ body {
   box-shadow: 0 4px 6px rgba(0,0,0,0.1);
 }
 
-.upload-card {
-  background: white;
-  border-radius: 15px;
-  box-shadow: 0 8px 25px rgba(0,0,0,0.1);
-  border: none;
-  transition: transform 0.3s ease;
+.header-title {
+  font-size: 1.6rem;
+  font-weight: 700;
+  margin: 0 0 0.5rem 0;
+  color: white;
 }
 
-.upload-card:hover {
-  transform: translateY(-5px);
+.header-subtitle {
+  font-size: 1rem;
+  opacity: 0.95;
+  margin: 0;
+  color: rgba(255, 255, 255, 0.95);
 }
 
-.upload-area {
-  border: 3px dashed var(--accent-green);
+/* Header info cards - Weather & AI-Powered */
+.header-cards {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  justify-content: flex-end;
+}
+
+.header-info-card {
+  display: flex;
+  align-items: flex-start;
+  gap: 1rem;
+  background: rgba(255, 255, 255, 0.15);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.25);
+  border-radius: 12px;
+  padding: 1rem 1.25rem;
+  min-width: 200px;
+  flex: 1;
+  max-width: 280px;
+}
+
+.header-info-icon {
+  width: 44px;
+  height: 44px;
+  background: rgba(255, 255, 255, 0.25);
   border-radius: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.header-info-icon i {
+  font-size: 1.25rem;
+  color: white;
+}
+
+.header-info-content {
+  flex: 1;
+  min-width: 0;
+}
+
+.header-info-title {
+  font-size: 0.95rem;
+  font-weight: 600;
+  margin: 0 0 0.35rem 0;
+  color: white;
+}
+
+.header-info-desc {
+  font-size: 0.8rem;
+  margin: 0;
+  color: rgba(255, 255, 255, 0.85);
+}
+
+/* Weather widget specifics */
+.weather-select {
+  background: rgba(255, 255, 255, 0.9) !important;
+  border: 1px solid rgba(255, 255, 255, 0.4);
+  border-radius: 8px;
+  font-size: 0.85rem;
+  padding: 0.4rem 0.6rem;
+}
+
+.weather-select:focus {
+  border-color: var(--accent-green);
+  box-shadow: 0 0 0 2px rgba(127, 176, 105, 0.3);
+}
+
+.weather-status, .weather-error {
+  display: block;
+  margin-top: 0.35rem;
+  font-size: 0.8rem;
+}
+
+.weather-status {
+  color: rgba(255, 255, 255, 0.9);
+}
+
+.weather-error {
+  color: #ffb3b3;
+}
+
+.weather-data {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  margin-top: 0.35rem;
+  font-size: 0.9rem;
+}
+
+.weather-temp {
+  font-weight: 600;
+  color: white;
+}
+
+.weather-humidity {
+  color: rgba(255, 255, 255, 0.9);
+  font-size: 0.8rem;
+}
+
+/* Upload Section Card */
+.upload-section-card {
+  background: white;
+  border-radius: 16px;
+  box-shadow: 0 4px 20px rgba(45, 90, 39, 0.08);
+  border: 1px solid rgba(45, 90, 39, 0.12);
+  padding: 1.5rem;
+  margin-bottom: 1.5rem;
+}
+
+.upload-section-header {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  margin-bottom: 1.5rem;
+}
+
+.upload-section-icon {
+  width: 48px;
+  height: 48px;
+  background: linear-gradient(135deg, var(--primary-green), var(--secondary-green));
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.upload-section-icon i {
+  font-size: 1.5rem;
+  color: white;
+}
+
+.upload-section-title {
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: var(--primary-green);
+  margin: 0 0 0.2rem 0;
+}
+
+.upload-section-subtitle {
+  font-size: 0.9rem;
+  color: #6b7a6b;
+  margin: 0;
+}
+
+/* Upload Area */
+.upload-area {
+  border: 2px dashed #c5d9c5;
+  border-radius: 14px;
   padding: 2rem;
   text-align: center;
-  background: var(--light-green);
-  transition: all 0.3s ease;
+  background: #f8fcf8;
+  transition: all 0.25s ease;
   cursor: pointer;
 }
 
 .upload-area:hover {
-  border-color: var(--secondary-green);
-  background: #d4edda;
+  border-color: var(--accent-green);
+  background: #eef8ee;
 }
 
 .upload-area.dragover {
   border-color: var(--primary-green);
-  background: #c3e6cb;
+  background: #e0f0e0;
+  border-style: solid;
+}
+
+.upload-area-icon {
+  width: 56px;
+  height: 56px;
+  margin: 0 auto 1rem;
+  background: rgba(45, 90, 39, 0.08);
+  border-radius: 14px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.upload-area-icon i {
+  font-size: 1.75rem;
+  color: var(--secondary-green);
+}
+
+.upload-area-title {
+  font-size: 1.05rem;
+  font-weight: 600;
+  color: #2d3a2d;
+  margin: 0 0 0.35rem 0;
+}
+
+.upload-area-hint {
+  font-size: 0.85rem;
+  color: #7a8a7a;
+  margin: 0 0 1.25rem 0;
+}
+
+.upload-area-buttons {
+  display: flex;
+  gap: 0.75rem;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.upload-btn {
+  padding: 0.6rem 1.25rem;
+  border-radius: 10px;
+  font-weight: 600;
+  font-size: 0.9rem;
+  display: inline-flex;
+  align-items: center;
+  transition: all 0.2s ease;
+  border: none;
+  cursor: pointer;
+}
+
+.upload-btn-primary {
+  background: linear-gradient(135deg, var(--primary-green), var(--secondary-green));
+  color: white;
+}
+
+.upload-btn-primary:hover:not(:disabled) {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 15px rgba(45, 90, 39, 0.35);
+}
+
+.upload-btn-secondary {
+  background: white;
+  color: var(--primary-green);
+  border: 1.5px solid var(--accent-green);
+}
+
+.upload-btn-secondary:hover:not(:disabled) {
+  background: var(--light-green);
+  border-color: var(--secondary-green);
+}
+
+.upload-btn-outline {
+  background: transparent;
+  color: #6b7a6b;
+  border: 1.5px solid #c5d0c5;
+}
+
+.upload-btn-outline:hover:not(:disabled) {
+  background: #f5f5f5;
+  color: var(--primary-green);
+  border-color: var(--accent-green);
+}
+
+.upload-btn:disabled {
+  opacity: 0.7;
+  cursor: not-allowed;
+}
+
+.upload-btn-lg {
+  padding: 0.75rem 1.75rem;
+  font-size: 1rem;
+}
+
+/* Upload Preview */
+.upload-preview-section {
+  margin-top: 1.5rem;
+  text-align: center;
+}
+
+.upload-preview-wrapper {
+  display: inline-block;
+  position: relative;
+}
+
+.upload-preview-image {
+  max-width: 220px;
+  max-height: 220px;
+  border-radius: 12px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+  object-fit: contain;
+}
+
+.upload-preview-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  margin-top: 0.75rem;
+  padding: 0.4rem 1rem;
+  background: rgba(40, 167, 69, 0.12);
+  color: var(--success-green);
+  border-radius: 20px;
+  font-size: 0.9rem;
+  font-weight: 600;
+}
+
+.upload-preview-badge i {
+  font-size: 0.95rem;
+}
+
+/* Upload Actions */
+.upload-actions {
+  margin-top: 1.5rem;
+  padding-top: 1.5rem;
+  border-top: 1px solid #e8efe8;
+  text-align: center;
+}
+
+.upload-actions-row {
+  display: flex;
+  gap: 0.75rem;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.upload-actions-hint {
+  font-size: 0.9rem;
+  color: #8a9a8a;
+  margin: 0;
 }
 
 .btn-primary {
@@ -183,6 +482,41 @@ body {
   border-radius: 10px;
   padding: 1rem;
   text-align: center;
+}
+
+/* Prediction page header - responsive */
+@media (max-width: 991px) {
+  .header-cards {
+    justify-content: center;
+  }
+
+  .header-info-card {
+    max-width: 100%;
+  }
+}
+
+@media (max-width: 576px) {
+  .header-cards {
+    flex-direction: column;
+  }
+
+  .header-info-card {
+    max-width: 100%;
+    min-width: 0;
+  }
+}
+
+/* Admin Dashboard prediction row */
+.admin-prediction-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  padding: 0.5rem 0;
+  border-bottom: 1px solid #eee;
+}
+
+.admin-prediction-row:last-child {
+  border-bottom: none;
 }
 
 /* Camera Modal Styles */

@@ -1,49 +1,46 @@
-import React, { useState, useEffect } from 'react';
+import React, { useMemo } from 'react';
 import { useNavigate } from 'react-router-dom';
+import * as XLSX from 'xlsx';
 
-const AdminDashboard = ({ user, onLogout }) => {
-  const [stats, setStats] = useState({
-    totalPredictions: 0,
-    healthyPlants: 0,
-    diseasedPlants: 0,
-    topDiseases: []
-  });
-  const [recentPredictions, setRecentPredictions] = useState([]);
+const formatDiseaseName = (name) => {
+  if (!name) return 'Unknown';
+  return name.replace(/_/g, ' ').replace(/\b\w/g, (l) => l.toUpperCase());
+};
+
+const AdminDashboard = ({ user, onLogout, predictionHistory = [] }) => {
   const navigate = useNavigate();
 
-  useEffect(() => {
-    // Simulate loading admin data
-    loadAdminData();
-  }, []);
+  const { stats, topDiseases } = useMemo(() => {
+    const total = predictionHistory.length;
+    const diseaseCountMap = {};
+    let healthy = 0;
+    let diseased = 0;
 
-  const loadAdminData = async () => {
-    try {
-      // Simulate API call to get admin statistics
-      await new Promise(resolve => setTimeout(resolve, 1000));
-      
-      // Mock data - in real app, this would come from your backend
-      setStats({
-        totalPredictions: 128,
-        healthyPlants: 89,
-        diseasedPlants: 39,
-        topDiseases: [
-          { name: 'Tomato Early Blight', count:20 },
-          { name: 'Apple Scab', count: 38 },
-          { name: 'Corn Common Rust', count: 32 },
-          { name: 'Potato Late Blight', count: 28 }
-        ]
-      });
+    predictionHistory.forEach((p) => {
+      const name = p.disease || 'Unknown';
+      diseaseCountMap[name] = (diseaseCountMap[name] || 0) + 1;
+      const lower = name.toLowerCase();
+      if (lower.includes('healthy')) {
+        healthy++;
+      } else {
+        diseased++;
+      }
+    });
 
-      setRecentPredictions([
-        { id: 1, image: 'plant1.jpg', disease: 'Tomato Early Blight', confidence: 0.92, timestamp: '2025-10-15 14:30' },
-        { id: 2, image: 'plant2.jpg', disease: 'Healthy', confidence: 0.88, timestamp: '2025-10-15 14:25' },
-        { id: 3, image: 'plant3.jpg', disease: 'Apple Scab', confidence: 0.95, timestamp: '2025-10-15 14:20' },
-        { id: 4, image: 'plant4.jpg', disease: 'Corn Common Rust', confidence: 0.89, timestamp: '2025-10-15 14:15' }
-      ]);
-    } catch (error) {
-      console.error('Failed to load admin data:', error);
-    }
-  };
+    const top = Object.entries(diseaseCountMap)
+      .map(([name, count]) => ({ name: formatDiseaseName(name), count }))
+      .sort((a, b) => b.count - a.count)
+      .slice(0, 8);
+
+    return {
+      stats: {
+        totalPredictions: total,
+        healthyPlants: healthy,
+        diseasedPlants: diseased,
+      },
+      topDiseases: top,
+    };
+  }, [predictionHistory]);
 
   const handleLogout = () => {
     onLogout();
@@ -52,6 +49,25 @@ const AdminDashboard = ({ user, onLogout }) => {
 
   const handleGoToPredict = () => {
     navigate('/predict');
+  };
+
+  const handleExportData = () => {
+    if (predictionHistory.length === 0) {
+      alert('No data to export.');
+      return;
+    }
+    const rows = predictionHistory.map((p) => ({
+      Disease: formatDiseaseName(p.disease),
+      Location: p.location,
+      Date: p.date,
+      Time: p.time,
+      Confidence: p.confidence != null ? `${(p.confidence * 100).toFixed(1)}%` : '—',
+    }));
+    const ws = XLSX.utils.json_to_sheet(rows);
+    const wb = XLSX.utils.book_new();
+    XLSX.utils.book_append_sheet(wb, ws, 'Predictions');
+    const fileName = `plant_disease_predictions_${new Date().toISOString().slice(0, 10)}.xlsx`;
+    XLSX.writeFile(wb, fileName);
   };
 
   return (
@@ -130,7 +146,9 @@ const AdminDashboard = ({ user, onLogout }) => {
               <div className="card-body text-center">
                 <i className="fas fa-percentage fa-2x text-info mb-3"></i>
                 <h3 className="text-info">
-                  {((stats.healthyPlants / stats.totalPredictions) * 100).toFixed(1)}%
+                  {stats.totalPredictions > 0
+                    ? ((stats.healthyPlants / stats.totalPredictions) * 100).toFixed(1)
+                    : 0}%
                 </h3>
                 <p className="text-muted mb-0">Health Rate</p>
               </div>
@@ -149,7 +167,10 @@ const AdminDashboard = ({ user, onLogout }) => {
                 </h5>
               </div>
               <div className="card-body">
-                {stats.topDiseases.map((disease, index) => (
+                {topDiseases.length === 0 ? (
+                  <p className="text-muted mb-0">No predictions yet. Predictions will appear here.</p>
+                ) : (
+                topDiseases.map((disease, index) => (
                   <div key={index} className="d-flex justify-content-between align-items-center mb-3">
                     <div>
                       <strong>{disease.name}</strong>
@@ -162,7 +183,8 @@ const AdminDashboard = ({ user, onLogout }) => {
                       </span>
                     </div>
                   </div>
-                ))}
+                ))
+                )}
               </div>
             </div>
           </div>
@@ -177,20 +199,32 @@ const AdminDashboard = ({ user, onLogout }) => {
                 </h5>
               </div>
               <div className="card-body">
-                {recentPredictions.map((prediction) => (
-                  <div key={prediction.id} className="d-flex justify-content-between align-items-center mb-3">
-                    <div>
-                      <strong>{prediction.disease}</strong>
-                      <br />
-                      <small className="text-muted">{prediction.timestamp}</small>
+                {predictionHistory.length === 0 ? (
+                  <p className="text-muted mb-0">No predictions yet.</p>
+                ) : (
+                  predictionHistory.slice(0, 15).map((p) => (
+                    <div key={p.id} className="admin-prediction-row">
+                      <div>
+                        <strong>{formatDiseaseName(p.disease)}</strong>
+                        <br />
+                        <small className="text-muted">
+                          <i className="fas fa-map-marker-alt me-1"></i>{p.location}
+                          {' · '}
+                          {p.date} {p.time}
+                        </small>
+                      </div>
+                      <div className="text-end">
+                        {p.confidence != null ? (
+                          <span className={`badge ${p.disease?.toLowerCase().includes('healthy') ? 'bg-success' : 'bg-warning'}`}>
+                            {(p.confidence * 100).toFixed(0)}%
+                          </span>
+                        ) : (
+                          <span className="badge bg-secondary">—</span>
+                        )}
+                      </div>
                     </div>
-                    <div className="text-end">
-                      <span className={`badge ${prediction.disease === 'Healthy' ? 'bg-success' : 'bg-warning'}`}>
-                        {(prediction.confidence * 100).toFixed(0)}%
-                      </span>
-                    </div>
-                  </div>
-                ))}
+                  ))
+                )}
               </div>
             </div>
           </div>
@@ -215,7 +249,7 @@ const AdminDashboard = ({ user, onLogout }) => {
                     </button>
                   </div>
                   <div className="col-md-3 mb-2">
-                    <button className="btn btn-outline-success w-100">
+                    <button className="btn btn-outline-success w-100" onClick={handleExportData} disabled={predictionHistory.length === 0}>
                       <i className="fas fa-download me-2"></i>
                       Export Data
                     </button>

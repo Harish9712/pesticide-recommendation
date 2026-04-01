@@ -353,7 +353,17 @@ const UploadSection = ({ onFileSelect, onPredict, onReset, selectedFile, imagePr
   };
 
   return (
-    <div className="card upload-card p-4 mb-4">
+    <div className="upload-section-card">
+      <div className="upload-section-header">
+        <div className="upload-section-icon">
+          <i className="fas fa-leaf"></i>
+        </div>
+        <div>
+          <h4 className="upload-section-title">Upload Leaf Image</h4>
+          <p className="upload-section-subtitle">Select a plant leaf photo for disease analysis</p>
+        </div>
+      </div>
+
       <div 
         className={`upload-area ${isDragOver ? 'dragover' : ''}`}
         onDragOver={handleDragOver}
@@ -361,20 +371,22 @@ const UploadSection = ({ onFileSelect, onPredict, onReset, selectedFile, imagePr
         onDrop={handleDrop}
         onClick={handleClick}
       >
-        <i className="fas fa-cloud-upload-alt fa-3x text-muted mb-3"></i>
-        <h5>Upload Plant Leaf Image</h5>
-        <p className="text-muted">Drag and drop an image here or click to browse</p>
+        <div className="upload-area-icon">
+          <i className="fas fa-cloud-upload-alt"></i>
+        </div>
+        <h5 className="upload-area-title">Drag & Drop or Click to Upload</h5>
+        <p className="upload-area-hint">Supports JPEG, PNG — Leaf images work best</p>
         <input 
           ref={fileInputRef}
-          className="form-control d-none" 
+          className="d-none" 
           type="file" 
           accept="image/*" 
           onChange={handleFileInputChange}
         />
-        <div className="d-flex gap-2 justify-content-center flex-wrap">
+        <div className="upload-area-buttons">
           <button 
             type="button" 
-            className="btn btn-outline-primary"
+            className="upload-btn upload-btn-secondary"
             onClick={(e) => {
               e.stopPropagation();
               handleClick();
@@ -384,10 +396,9 @@ const UploadSection = ({ onFileSelect, onPredict, onReset, selectedFile, imagePr
           </button>
           <button 
             type="button" 
-            className="btn btn-outline-success"
+            className="upload-btn upload-btn-secondary"
             onClick={(e) => {
               e.stopPropagation();
-              console.log('Camera button clicked, starting camera...');
               startCamera();
             }}
             disabled={cameraLoading}
@@ -398,19 +409,21 @@ const UploadSection = ({ onFileSelect, onPredict, onReset, selectedFile, imagePr
       </div>
       
       {imagePreview && (
-        <div className="text-center">
-          <img src={imagePreview} className="image-preview" alt="Preview" />
-          <p className="text-muted mt-2">
-            <i className="fas fa-check-circle text-success me-1"></i>Image ready for analysis
-          </p>
+        <div className="upload-preview-section">
+          <div className="upload-preview-wrapper">
+            <img src={imagePreview} className="upload-preview-image" alt="Leaf preview" />
+            <div className="upload-preview-badge">
+              <i className="fas fa-check-circle"></i> Ready for analysis
+            </div>
+          </div>
         </div>
       )}
       
-      <div className="text-center mt-3">
+      <div className="upload-actions">
         {selectedFile ? (
-          <div>
+          <div className="upload-actions-row">
             <button 
-              className="btn btn-primary btn-lg me-2" 
+              className="upload-btn upload-btn-primary upload-btn-lg" 
               onClick={onPredict}
               disabled={loading}
             >
@@ -425,15 +438,15 @@ const UploadSection = ({ onFileSelect, onPredict, onReset, selectedFile, imagePr
               )}
             </button>
             <button 
-              className="btn btn-outline-secondary" 
+              className="upload-btn upload-btn-outline" 
               onClick={onReset}
               disabled={loading}
             >
-              <i className="fas fa-times me-2"></i>Reset
+              <i className="fas fa-redo me-2"></i>Reset
             </button>
           </div>
         ) : (
-          <p className="text-muted">Please select an image to analyze</p>
+          <p className="upload-actions-hint">Select an image above to start analysis</p>
         )}
       </div>
 

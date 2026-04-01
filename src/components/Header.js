@@ -1,23 +1,31 @@
 import React from 'react';
+import WeatherWidget from './WeatherWidget';
 
-const Header = () => {
+const Header = ({ selectedPlace, onPlaceChange }) => {
   return (
     <div className="header-section">
       <div className="container">
         <div className="row align-items-center">
-          <div className="col-md-8">
-            <h1 className="mb-2">
-              <i className="fas fa-seedling me-3"></i>AI Plant Disease Classifier
+          <div className="col-lg-6 col-12 mb-3 mb-lg-0">
+            <h1 className="header-title">
+              <i className="fas fa-seedling me-2"></i>AI Plant Disease Classifier
             </h1>
-            <p className="lead mb-0">
+            <p className="header-subtitle">
               Upload a plant leaf image to identify diseases and get pesticide recommendations
             </p>
           </div>
-          <div className="col-md-4 text-end">
-            <div className="stats-card">
-              <i className="fas fa-brain feature-icon"></i>
-              <h5 className="mb-1">AI-Powered</h5>
-              <small className="text-muted">Advanced ML Model</small>
+          <div className="col-lg-6 col-12">
+            <div className="header-cards">
+              <WeatherWidget selectedPlace={selectedPlace} onPlaceChange={onPlaceChange} />
+              <div className="header-info-card">
+                <div className="header-info-icon">
+                  <i className="fas fa-brain"></i>
+                </div>
+                <div className="header-info-content">
+                  <h5 className="header-info-title">AI-Powered</h5>
+                  <p className="header-info-desc">Pesticide Recommendations using </p>
+                </div>
+              </div>
             </div>
           </div>
         </div>

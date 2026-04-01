@@ -18,10 +18,10 @@ const Login = ({ onLogin }) => {
       await new Promise(resolve => setTimeout(resolve, 1000));
       
       // Check credentials
-      if (email === 'harish.admin@hms.in' && password === 'Harish2005'|| email==='sangamithra.admin@hms.in' && password==='Madhu2005'|| email==='srinivasan.admin@hms.in' && password==='12345678') {
+      if (email === 'harish.admin@hms.in' && password === 'Harish2004'|| email==='sangamithra.admin@hms.in' && password==='Madhu2005'|| email==='srinivasan.admin@hms.in' && password==='12345678') {
         onLogin({ email, role: 'admin' });
         navigate('/admin');
-      } else if (email !== 'harish.admin@hms.in' && password !== 'Harish2005' && email !== 'sangamithra.admin@hms.in' && password !== 'Madhu2005' && email !== 'srinivasan.admin@hms.in' && password !== '12345678') {
+      } else if (email !== 'harish.admin@hms.in' && password !== 'Harish2004' && email !== 'sangamithra.admin@hms.in' && password !== 'Madhu2005' && email !== 'srinivasan.admin@hms.in' && password !== '12345678') {
         onLogin({ email, role: 'user' });
         navigate('/predict');
       } else {
@@ -35,12 +35,24 @@ const Login = ({ onLogin }) => {
   };
 
   return (
-    <div className="min-vh-100 d-flex align-items-center justify-content-center" style={{ background: 'linear-gradient(135deg, #e8f5e8 0%, #f0f8f0 100%)' }}>
+    <div className="login-page-wrapper min-vh-100 d-flex align-items-center justify-content-center" style={{ position: 'relative' }}>
+      <div
+        className="login-page-bg"
+        style={{
+          position: 'absolute',
+          inset: 0,
+          zIndex: -1,
+          backgroundImage: "url('/farmer.png')",
+          backgroundSize: 'cover',
+          backgroundPosition: 'center',
+          backgroundRepeat: 'no-repeat',
+        }}
+      />
       <div className="container">
         <div className="row justify-content-center">
           <div className="col-md-6 col-lg-4">
-            <div className="card shadow-lg border-0" style={{ borderRadius: '15px' }}>
-              <div className="card-body p-5">
+            <div className="card shadow-lg border-0" style={{ borderRadius: '15px', background: 'rgba(255, 255, 255, 0.7)', backdropFilter: 'blur(8px)' }}>
+              <div className="card-body p-5" style={{ background: 'transparent' }}>
                 <div className="text-center mb-4">
                   <i className="fas fa-seedling fa-3x text-success mb-3"></i>
                   <h3 className="fw-bold text-success">Plant Disease Classifier</h3>

@@ -4,12 +4,13 @@ import Header from './Header';
 import UploadSection from './UploadSection';
 import ResultsSection from './ResultsSection';
 
-const PredictionPage = ({ user, onLogout }) => {
+const PredictionPage = ({ user, onLogout, onPredictionRecord }) => {
   const [selectedFile, setSelectedFile] = useState(null);
   const [imagePreview, setImagePreview] = useState(null);
   const [results, setResults] = useState(null);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
+  const [selectedLocation, setSelectedLocation] = useState('Coimbatore');
   const navigate = useNavigate();
 
   const handleFileSelect = (file) => {
@@ -35,7 +36,8 @@ const PredictionPage = ({ user, onLogout }) => {
     formData.append('image', selectedFile);
 
     try {
-      const response = await fetch('http://localhost:5000/predict', {
+      const apiBase = (process.env.REACT_APP_API_URL || 'http://localhost:5000').replace(/\/$/, '');
+      const response = await fetch(`${apiBase}/predict`, {
         method: 'POST',
         body: formData,
       });
@@ -47,8 +49,21 @@ const PredictionPage = ({ user, onLogout }) => {
       }
 
       setResults(data);
+      if (onPredictionRecord && data.prediction) {
+        onPredictionRecord({
+          disease: data.prediction.predicted_class || 'No prediction',
+          location: selectedLocation,
+          confidence: data.prediction.confidence,
+        });
+      }
     } catch (err) {
       setError(err.message);
+      if (onPredictionRecord) {
+        onPredictionRecord({
+          disease: 'Prediction Failed',
+          location: selectedLocation,
+        });
+      }
     } finally {
       setLoading(false);
     }
@@ -96,7 +111,7 @@ const PredictionPage = ({ user, onLogout }) => {
         </div>
       </nav>
 
-      <Header />
+      <Header selectedPlace={selectedLocation} onPlaceChange={setSelectedLocation} />
       <div className="container">
         <div className="row justify-content-center">
           <div className="col-lg-8">
